@@ -1,8 +1,8 @@
 import mongoose from "mongoose";
+import dotenv from "dotenv";
 
-mongoose.connect(
-  "mongodb+srv://diwakarr67:Rohitd12345@cluster0.mgz82.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-);
+dotenv.config();
+mongoose.connect(process.env.MONGO_DB_URI);
 // mongoose.connect("mongodb://127.0.0.1:27017/docs");
 
 const docSchema = mongoose.Schema({

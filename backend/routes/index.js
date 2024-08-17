@@ -3,9 +3,8 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import userModel from "../models/useModel.js";
 import docModel from "../models/docModel.js";
-
 const router = express.Router();
-const secret = "secret";
+const secret = process.env.JWT_SECRET ;
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
