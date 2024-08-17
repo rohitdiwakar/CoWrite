@@ -7,7 +7,7 @@ import indexRouter from './routes/index.js';
 import usersRouter from './routes/users.js';
 import { app, server } from "./socket/socket.js";
 import connectToMongoDB from "./db/connectToMongoDB.js";
-// dotenv.config();
+dotenv.config();
 const PORT = process.env.port || 3000;
 const __dirname = path.resolve();
 
@@ -15,17 +15,22 @@ const __dirname = path.resolve();
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
 
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
 
-app.use(cors());
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
+
 
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
+
+app.get("*", (req, res) => {
+	res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+});
 
 
 // define the route
