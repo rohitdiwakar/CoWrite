@@ -11,7 +11,7 @@ export const SocketContextProvider = ({ children }) => {
     const [socket, setSocket] = useState(null);
 
     useEffect(() => {
-        const newSocket = io('https://cowrite-gtj6.onrender.com');  // Replace with your server URL
+        const newSocket = io('http://localhost:3000');  // Replace with your server URL
         setSocket(newSocket);
 
         return () => newSocket.close();
