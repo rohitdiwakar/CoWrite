@@ -14,12 +14,13 @@ const __dirname = path.resolve();
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "ejs");
+app.use(cors());
 
-app.use(cors({
-  origin: 'http://localhost:5173', // Replace with your frontend URL
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Content-Type']
-}));
+// app.use(cors({
+//   origin: 'http://localhost:5173', // Replace with your frontend URL
+//   methods: ['GET', 'POST'],
+//   allowedHeaders: ['Content-Type']
+// }));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
